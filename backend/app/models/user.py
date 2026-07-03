@@ -1,7 +1,9 @@
+from __future__ import annotations
+
 import enum
 
 from sqlalchemy import Enum, String
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database import Base
 
@@ -21,3 +23,5 @@ class User(Base):
     role: Mapped[UserRole] = mapped_column(
         Enum(UserRole, name="user_role"), default=UserRole.user, nullable=False
     )
+
+    bookings: Mapped[list[Booking]] = relationship("Booking", back_populates="user")
