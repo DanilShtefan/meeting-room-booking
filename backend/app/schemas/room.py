@@ -4,6 +4,7 @@ from pydantic import BaseModel
 
 
 class SlotItem(BaseModel):
+    id: int
     start_time: time
     end_time: time
 

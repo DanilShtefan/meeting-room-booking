@@ -1,20 +1,11 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useAuth } from './context/AuthContext'
 import LoginPage from './pages/LoginPage'
+import BookingPage from './pages/BookingPage'
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
   const { isAuth } = useAuth()
   return isAuth ? <>{children}</> : <Navigate to="/login" replace />
-}
-
-function HomePage() {
-  const { logout } = useAuth()
-  return (
-    <div>
-      <h1>Meeting Room Booking</h1>
-      <button onClick={logout}>Logout</button>
-    </div>
-  )
 }
 
 function App() {
@@ -25,7 +16,7 @@ function App() {
         path="/"
         element={
           <PrivateRoute>
-            <HomePage />
+            <BookingPage />
           </PrivateRoute>
         }
       />
