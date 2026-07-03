@@ -19,7 +19,7 @@ class Settings(BaseSettings):
             f"@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
         )
 
-    model_config = {"env_prefix": ""}
+    model_config = {"env_prefix": "", "env_file": ".env"}
 
 
 settings = Settings()
